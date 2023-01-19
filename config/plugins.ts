@@ -1,14 +1,20 @@
 export default ({ env }) => ({
-  // email: {
-  //   config: {
-  //     provider: "sendgrid",
-  //     providerOptions: {
-  //       apiKey: env("SENDGRID_API_KEY"),
-  //     },
-  //     settings: {
-  //       defaultFrom: "lequochung199712@gmail.com",
-  //       defaultReplyTo: "lequochung199712@gmail.com",
-  //     },
-  //   },
-  // },
+  email: {
+    config: {
+      provider: "nodemailer",
+      providerOptions: {
+        host: env("SMTP_HOST", "smtp.gmail.com"),
+        port: env("SMTP_PORT", 587),
+        auth: {
+          user: env("SMTP_USERNAME"),
+          pass: env("SMTP_PASSWORD"),
+        },
+        // ... any custom nodemailer options
+      },
+      settings: {
+        defaultFrom: "no-reply@ecommerce.com",
+        defaultReplyTo: "no-reply@ecommerce.com",
+      },
+    },
+  },
 });
